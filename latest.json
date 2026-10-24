@@ -1,0 +1,13 @@
+{
+ "version": "0.3.40",
+ "file": "CertFlow-Setup-0.3.40.exe",
+ "url": "https://github.com/QuangToan0512/certflow-documate-releases/releases/download/v0.3.40/CertFlow-Setup-0.3.40.exe",
+ "size": 32998256,
+ "sha256": "51188dbe91ac1ff0b24b7ed9e64c403e2e9523ff6d8ae228d4b53fa3518dc0dd",
+ "date": "2026-10-24",
+ "commit": "629b8cac1970baedea22d7be5a3b938f26515e4f",
+ "notes": [
+  "Cải tiến nhỏ và sửa lỗi."
+ ],
+ "sig": "E6EbgF7u3bkdL70lxsqZ7USUeetxzMBd9kPCCAx7yQD5Quad6hKg6qBhS-fn82HKqqRqGuM1K9alUDbIutkQAA"
+}

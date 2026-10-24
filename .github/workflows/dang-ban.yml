@@ -1,0 +1,44 @@
+# Repo này chỉ chứa bộ cài CertFlow DocuMate. CI của repo mã nguồn (riêng tư) đẩy bộ cài +
+# latest.json (đã ký) + ghi-chu.md vào nhánh phat-hanh; workflow này tạo GitHub Release từ đó.
+# App đã cài đọc releases/latest/download/latest.json để biết có bản mới.
+name: Đăng bản phát hành
+
+on:
+  push:
+    branches: [phat-hanh]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: dang-ban
+  cancel-in-progress: false
+
+jobs:
+  dang:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: phat-hanh
+      - name: Tạo Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          ver=$(jq -r .version latest.json)
+          gh release create "v$ver" "CertFlow-Setup-$ver.exe" latest.json \
+            --target main --title "CertFlow DocuMate $ver" --notes-file ghi-chu.md --latest
+          echo "Đã đăng v$ver" >> "$GITHUB_STEP_SUMMARY"
+      - name: Chỉ giữ 15 bản gần nhất
+        env:
+          GH_TOKEN: ${{ github.token }}
+        # by the time each was published: every release targets main, so their createdAt (the date of
+        # that commit) are all the same, and sorting by it once deleted the release just made (v0.3.39)
+        run: |
+          ver=$(jq -r .version latest.json)
+          gh release list --limit 200 --json tagName,publishedAt \
+            --jq 'sort_by(.publishedAt) | reverse | .[15:] | .[].tagName' |
+          while read -r t; do
+            if [ "$t" != "v$ver" ]; then gh release delete "$t" --yes --cleanup-tag; fi
+          done
