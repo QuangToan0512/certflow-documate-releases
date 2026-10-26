@@ -1,0 +1,15 @@
+{
+ "version": "0.3.41",
+ "file": "CertFlow-Setup-0.3.41.exe",
+ "url": "https://github.com/QuangToan0512/certflow-documate-releases/releases/download/v0.3.41/CertFlow-Setup-0.3.41.exe",
+ "size": 33011441,
+ "sha256": "b36e2a789d7e2f70b46c7a090bfbbce2ac67321d3555dbaa104b7778f1f1a361",
+ "date": "2026-10-26",
+ "commit": "52672c04e0b2b0456edefdfb5155f53c59d2ddf5",
+ "notes": [
+  "Values that go onto the next line (HHB)",
+  "Take a whole bulleted list as one value (\"Lấy cả danh sách gạch đầu dòng bên dưới\")",
+  "Take only the first part of a value (\"Phương thức 8 (Theo thông tư…)\" -> \"Phương thức 8\")"
+ ],
+ "sig": "XA7dhdNmF0JdldoHxP44aW2YvcRBeoIhat5HcV0RMdJ_4CFur0SmCuZURiQGNLhvnZCVyxkNzOs3DwAQa5ViDg"
+}
